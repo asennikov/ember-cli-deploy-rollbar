@@ -20,7 +20,7 @@ module.exports = {
         return request({
           uri: 'https://api.rollbar.com/api/1/deploy/',
           method: 'POST',
-          body: {
+          form: {
             access_token: token,
             environment: context.config.build.environment,
             revision: context.revisionData.revisionKey
