@@ -14,9 +14,10 @@ module.exports = {
       requiredConfig: ['accessToken'],
 
       didDeploy: function(context) {
+        var _this = this;
         var token = this.readConfig('accessToken');
-        this.log('Creating new deploy in Rollbar');
 
+        this.log('Creating new deploy in Rollbar');
         return request({
           uri: 'https://api.rollbar.com/api/1/deploy/',
           method: 'POST',
@@ -27,7 +28,7 @@ module.exports = {
           },
           resolveWithFullResponse: true
         }).then(function() {
-          this.log('Deploy was successfully created in Rollbar');
+          _this.log('Deploy was successfully created in Rollbar');
         });
       }
     });
